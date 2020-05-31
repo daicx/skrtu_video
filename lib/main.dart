@@ -4,6 +4,7 @@ import 'package:skrtuvideo/component/mybutton.dart';
 
 import 'component/mygrid_view.dart';
 import 'component/mytabbar.dart';
+import 'component/myvideo_player.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,11 +35,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //首页标题栏tab
   final List<String> _indexTabValues = [];
+  //视频页tab
   final List<String> _videoTabValues = [];
+  //消息tab
+  final List<String> _discussTabValues = [];
+  //metab
+  final List<String> _meTabValues = [];
   TabController _controller;
+  //中间内容层
   final List<Widget> _bodyViewList = [];
+  //控制显示哪个tab组
   final List<List<String>> _topViewList = [];
+  //当前选中的第几个底部菜单栏
   int _selected = 0;
   String imgPath = 'imgs/';
 
@@ -56,23 +66,41 @@ class _MyHomePageState extends State<MyHomePage> {
       '推荐',
     ]);
     _videoTabValues.addAll([
-      '视频',
-      '短视频',
+      '兔视',
+      '兔影',
     ]);
+    _discussTabValues.addAll([
+      '会话',
+      '好友列表',
+    ]);
+    _meTabValues.addAll([
+      '作品',
+      '兔窝'
+    ]);
+    //下标0是首页tab组
     _topViewList.add(_indexTabValues);
+    //下标1是视频tab组
     _topViewList.add(_videoTabValues);
+    //下标2是消息tab组
+    _topViewList.add(_discussTabValues);
+    //下标3是我的tab组
+    _topViewList.add(_meTabValues);
     _controller = TabController(
-      length: _indexTabValues.length,
+      length: 2,
       vsync: ScrollableState(),
     );
-    //首页
+    //首页内容组
     _bodyViewList.add(Center(
       child: TabBarView(
         controller: _controller,
         children: <Widget>[MyGridView(), MyTabBar()],
       ),
     ));
-    //视频
+    //视频页内容组
+    _bodyViewList.add(MyGridView());
+    //消息内容组
+    _bodyViewList.add(MyGridView());
+    //我的内容组
     _bodyViewList.add(MyGridView());
   }
 
@@ -143,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPress: () => {_changeIndex(0)},
             ),
             MyFlatButton(
-              text: '视频',
+              text: '影视',
               img: _selected == 1
                   ? imgPath + 'video_select.png'
                   : imgPath + 'video.png',
