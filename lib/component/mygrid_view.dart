@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:skrtuvideo/component/myvideo_player.dart';
 
 import 'myimg_item.dart';
-import 'myvideo_player.dart';
 
 class MyGridView extends StatefulWidget {
   @override
@@ -34,21 +34,37 @@ class _MyGridView extends State<MyGridView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black12,
-        body: GridView.builder(
+      backgroundColor: Colors.black12,
+      body: Padding(
+        padding: EdgeInsets.all(5),
+        child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 500.0,
-                mainAxisSpacing: 3.0,
-                crossAxisSpacing: 3.0),
+                maxCrossAxisExtent: 600.0,
+                mainAxisSpacing: 5.0,
+                crossAxisSpacing: 5.0),
             itemCount: _items.length,
             itemBuilder: (context, index) {
-              return Container(
-                color: Colors.green,
-//                child: Text(_items[index]),
-                child: MyImgItem(
-                  id: 1,
-                ),
-              );
-            }));
+              if (index % 2 == 0) {
+                return Material(
+                  child: Container(
+//                    color: Colors.green,
+                    child: MyImgItem(
+                      id: 1,
+                    ),
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                );
+              } else {
+                return Material(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Container(
+//                    color: Colors.green,
+                    child: MyVideoPlayer(),
+                  ),
+                );
+              }
+            }),
+      ),
+    );
   }
 }
