@@ -1,8 +1,20 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(VideoApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Material",
+      home: VideoApp(),
+    );
+  }
+}
 
 class VideoApp extends StatefulWidget {
   @override
@@ -16,6 +28,7 @@ class _VideoAppState extends State<VideoApp> {
   double volume = 0.75;
   bool sliderVisual = false;
   bool showContro = true;
+  double radio = 16 / 9;
 
   @override
   void initState() {
@@ -36,42 +49,53 @@ class _VideoAppState extends State<VideoApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Video Demo',
-      home: Scaffold(
-        body: Column(children: <Widget>[
-          if (_controller.value.initialized)
-            ConstrainedBox(
-              constraints: BoxConstraints(maxHeight: 700),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Stack(
-                  children: <Widget>[
-                    GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onPanDown: (d) {
-                        setState(() {
-                          showContro = !showContro;
-                        });
-                      },
-                      onDoubleTap: () {
-                        setState(() {
-                          _controller.value.isPlaying
-                              ? _controller.pause()
-                              : _controller.play();
-                        });
-                      },
-                      child: Container(
-                        child: VideoPlayer(_controller),
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Container(
+          color: Colors.grey,
+          child: Column(children: <Widget>[
+            if (_controller.value.initialized)
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: 700),
+                child: AspectRatio(
+                  aspectRatio: radio,
+                  child: Stack(
+                    children: <Widget>[
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onPanDown: (d) {
+                          setState(() {
+                            showContro = !showContro;
+                          });
+                        },
+                        onDoubleTap: () {
+                          setState(() {
+                            _controller.value.isPlaying
+                                ? _controller.pause()
+                                : _controller.play();
+                          });
+                        },
+                        child: Container(
+                          child: VideoPlayer(_controller),
+                        ),
                       ),
-                    ),
-                    if (showContro) overLay(),
-                    Icon(Icons.access_time)
-                  ],
+                      if (showContro) overLay(),
+                      if (!_controller.value.isPlaying)
+                        Center(
+                            child: Icon(
+                          Icons.play_circle_filled,
+                          color: Colors.white,
+                          size: 60,
+                        )),
+                    ],
+                  ),
                 ),
               ),
-            ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
@@ -95,12 +119,7 @@ class _VideoAppState extends State<VideoApp> {
           ),
         ),
         Expanded(
-//          flex: 3,
-          child: Container(
-//            alignment: Alignment.center,
-//            child: Icon(Icons.favorite_border),
-//            color: Colors.green,
-          ),
+          child: Container(),
         ),
 //        Expanded(
 //          flex: 2,
@@ -126,11 +145,13 @@ class _VideoAppState extends State<VideoApp> {
               color: Colors.white,
               icon: Icon(
                   _controller.value.isPlaying ? Icons.pause : Icons.play_arrow),
-              onPressed: () => setState(() {
-                _controller.value.isPlaying
-                    ? _controller.pause()
-                    : _controller.play();
-              }),
+              onPressed: () {
+                setState(() {
+                  _controller.value.isPlaying
+                      ? _controller.pause()
+                      : _controller.play();
+                });
+              },
             ),
             Text(
               '${formartDate(videoPoision)} / ${formartDate(videoLength)}',
@@ -161,6 +182,16 @@ class _VideoAppState extends State<VideoApp> {
               value: volume > 0 ? volume : 0,
               min: 0,
               max: 1,
+            ),
+            Spacer(),
+            IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: Icon(
+                Icons.crop_free,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
