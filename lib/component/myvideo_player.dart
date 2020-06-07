@@ -58,7 +58,7 @@ class _MyVideoPlayer extends State<MyVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         title: Row(
           children: <Widget>[
             Column(
@@ -124,7 +124,7 @@ class _MyVideoPlayer extends State<MyVideoPlayer> {
           ],
         ),
         backgroundColor: Colors.white,
-      ),
+      ),*/
       body: Column(
         children: <Widget>[
           Center(

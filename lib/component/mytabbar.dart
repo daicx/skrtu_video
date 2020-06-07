@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skrtuvideo/component/myshort_video_item.dart';
+import 'package:skrtuvideo/component/mystate_grid_view.dart';
 
 class MyTabBar extends StatefulWidget {
 
@@ -50,11 +52,8 @@ class _MyTabBar extends State<MyTabBar> {
       body: TabBarView(
         controller: _controller,
         children: _tabValues.map((f) {
-          return Center(
-            child: Container(
-              color: Colors.black12,
-              child: Text(f),
-            ),
+          return MyStateGridView(
+
           );
         }).toList(),
       ),

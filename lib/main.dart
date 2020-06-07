@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/mybutton.dart';
+import 'package:skrtuvideo/component/myvideo_video_item.dart';
+import 'package:skrtuvideo/pages/myvideo_long_page.dart';
 
 import 'component/mygrid_view.dart';
+import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';
 import 'component/myvideo_player.dart';
 
@@ -37,17 +40,26 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   //首页标题栏tab
   final List<String> _indexTabValues = [];
+
   //视频页tab
   final List<String> _videoTabValues = [];
+
   //消息tab
   final List<String> _discussTabValues = [];
+
   //metab
   final List<String> _meTabValues = [];
+  final List<TabController> tabControllers = [];
+
   TabController _controller;
+  TabController _controller1;
+
   //中间内容层
   final List<Widget> _bodyViewList = [];
+
   //控制显示哪个tab组
   final List<List<String>> _topViewList = [];
+
   //当前选中的第几个底部菜单栏
   int _selected = 0;
   String imgPath = 'imgs/';
@@ -73,10 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       '会话',
       '好友列表',
     ]);
-    _meTabValues.addAll([
-      '作品',
-      '兔窝'
-    ]);
+    _meTabValues.addAll(['作品', '兔窝']);
     //下标0是首页tab组
     _topViewList.add(_indexTabValues);
     //下标1是视频tab组
@@ -89,25 +98,40 @@ class _MyHomePageState extends State<MyHomePage> {
       length: 2,
       vsync: ScrollableState(),
     );
+    tabControllers.add(_controller);
+    _controller1 = TabController(
+      length: 2,
+      vsync: ScrollableState(),
+    );
+    tabControllers.add(_controller1);
     //首页内容组
     _bodyViewList.add(Center(
       child: TabBarView(
         controller: _controller,
-        children: <Widget>[MyGridView(), MyTabBar()],
+        children: <Widget>[MyStateGridView(), MyTabBar()],
       ),
     ));
     //视频页内容组
-    _bodyViewList.add(MyGridView());
+//    _bodyViewList.add(MyVideoLongPage());
+    _bodyViewList.add(Center(
+      child: TabBarView(
+        controller: _controller1,
+        children: [
+          MyVideoLongPage(type: 1),
+          MyVideoLongPage(type: 2),
+        ],
+      ),
+    ));
     //消息内容组
     _bodyViewList.add(MyGridView());
     //我的内容组
-    _bodyViewList.add(MyGridView());
+    _bodyViewList.add(MyStateGridView());
   }
 
   //首页标题
   TabBar getTabBar() {
     return TabBar(
-      controller: _controller, //控制器
+      controller: tabControllers[_selected], //控制器
       indicatorSize: TabBarIndicatorSize.label,
       tabs: _topViewList[_selected].map((e) {
         return Container(

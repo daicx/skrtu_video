@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:skrtuvideo/component/myvideo_player.dart';
+import 'package:skrtuvideo/component/myshort_video_item.dart';
 
 import 'myimg_item.dart';
+import 'myvideo_img_item.dart';
 
 class MyGridView extends StatefulWidget {
   @override
@@ -44,25 +45,13 @@ class _MyGridView extends State<MyGridView> {
                 crossAxisSpacing: 5.0),
             itemCount: _items.length,
             itemBuilder: (context, index) {
-              if (index % 2 == 0) {
-                return Material(
-                  child: Container(
+              return Material(
+                borderRadius: BorderRadius.circular(10.0),
+                child: Container(
 //                    color: Colors.green,
-                    child: MyImgItem(
-                      id: 1,
-                    ),
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                );
-              } else {
-                return Material(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Container(
-//                    color: Colors.green,
-                    child: MyVideoPlayer(),
-                  ),
-                );
-              }
+                  child: MyVideoImgItem(),
+                ),
+              );
             }),
       ),
     );

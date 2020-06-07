@@ -1,10 +1,10 @@
 import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
-import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
-void main() => runApp(MyApp());
+/*void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,9 +14,15 @@ class MyApp extends StatelessWidget {
       home: VideoApp(),
     );
   }
-}
+}*/
 
 class VideoApp extends StatefulWidget {
+  VideoApp({this.url, this.title, this.color});
+
+  final String url;
+  final String title;
+  final Color color;
+
   @override
   _VideoAppState createState() => _VideoAppState();
 }
@@ -30,11 +36,14 @@ class _VideoAppState extends State<VideoApp> {
   bool showContro = true;
   double radio = 16 / 9;
 
+  /// 记录是否全屏
+//  bool get _isFullScreen =>
+//      MediaQuery.of(context).orientation == Orientation.landscape;
+
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-        'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4')
+    _controller = VideoPlayerController.network(widget.url ?? '')
       ..addListener(() {
         setState(() {
           videoPoision = _controller.value.position;
@@ -50,12 +59,12 @@ class _VideoAppState extends State<VideoApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomPadding: true,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Container(
-          color: Colors.grey,
+          color: widget.color ?? Colors.grey,
           child: Column(children: <Widget>[
             if (_controller.value.initialized)
               ConstrainedBox(
@@ -64,6 +73,7 @@ class _VideoAppState extends State<VideoApp> {
                   aspectRatio: radio,
                   child: Stack(
                     children: <Widget>[
+
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
                         onPanDown: (d) {
@@ -114,7 +124,7 @@ class _VideoAppState extends State<VideoApp> {
         Padding(
           padding: EdgeInsets.all(10),
           child: Text(
-            "标题",
+            widget.title ?? '',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -130,6 +140,28 @@ class _VideoAppState extends State<VideoApp> {
     );
   }
 
+  //web无效
+//  void _toggleFullScreen() {
+//
+//    setState(() {
+//      SystemChrome.setEnabledSystemUIOverlays(
+//          []);
+//      if (_isFullScreen) {
+//        /// 如果是全屏就切换竖屏
+////        AutoOrientation.portraitAutoMode();
+//
+//        ///显示状态栏，与底部虚拟操作按钮
+//        SystemChrome.setEnabledSystemUIOverlays(
+//            [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+//      } else {
+////        AutoOrientation.landscapeAutoMode();
+//
+//        ///关闭状态栏，与底部虚拟操作按钮
+//        SystemChrome.setEnabledSystemUIOverlays([]);
+//      }
+////      _startPlayControlTimer(); // 操作完控件开始计时隐藏
+//    });
+//  }
 //进度条和控制栏
   Widget botomBar() {
     return Column(
@@ -186,7 +218,7 @@ class _VideoAppState extends State<VideoApp> {
             Spacer(),
             IconButton(
               onPressed: () {
-                setState(() {});
+//                _toggleFullScreen();
               },
               icon: Icon(
                 Icons.crop_free,
