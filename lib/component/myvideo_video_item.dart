@@ -76,7 +76,7 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
 //                height: 10,
 //              ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: Text(
                   '杜美蓉杜美蓉杜222,美蓉杜美蓉杜美蓉杜美蓉',
                   maxLines: 1,

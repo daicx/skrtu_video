@@ -31,6 +31,7 @@ class _VideoAppState extends State<VideoApp> {
   VideoPlayerController _controller;
   Duration videoLength;
   Duration videoPoision;
+  Duration initalPoision = Duration(milliseconds: 800);
   double volume = 0.75;
   bool sliderVisual = false;
   bool showContro = true;
@@ -52,6 +53,7 @@ class _VideoAppState extends State<VideoApp> {
       ..initialize().then((_) {
         setState(() {
           videoLength = _controller.value.duration;
+          _controller.seekTo(initalPoision);
         });
       });
   }
@@ -73,7 +75,6 @@ class _VideoAppState extends State<VideoApp> {
                   aspectRatio: radio,
                   child: Stack(
                     children: <Widget>[
-
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
                         onPanDown: (d) {
@@ -95,10 +96,14 @@ class _VideoAppState extends State<VideoApp> {
                       if (showContro) overLay(),
                       if (!_controller.value.isPlaying)
                         Center(
-                            child: Icon(
-                          Icons.play_circle_filled,
+                            child: IconButton(
+                          hoverColor: Colors.red,
                           color: Colors.white,
-                          size: 60,
+                          icon: Icon(
+                            Icons.play_circle_filled,
+                          ),
+                          onPressed: () => {_controller.play()},
+                          iconSize: 60,
                         )),
                     ],
                   ),

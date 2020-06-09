@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:skrtuvideo/component/myvideo_img_item.dart';
 import 'package:skrtuvideo/component/myvideo_video_item.dart';
+//视频-短视频页面
+class MyVideoShortPage extends StatefulWidget {
 
-//视频-长视频页面
-class MyVideoLongPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MyVideoLongPage();
+    return _MyVideoShortPage();
   }
+
 }
 
-class _MyVideoLongPage extends State<MyVideoLongPage> {
+class _MyVideoShortPage extends State<MyVideoShortPage> {
   final List<String> _items = [];
 
   @override
@@ -39,7 +40,8 @@ class _MyVideoLongPage extends State<MyVideoLongPage> {
         padding: EdgeInsets.all(5),
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 500.0,
+              childAspectRatio: 17/13,
+                maxCrossAxisExtent:  600,
                 mainAxisSpacing: 5.0,
                 crossAxisSpacing: 5.0),
             itemCount: _items.length,
@@ -47,7 +49,7 @@ class _MyVideoLongPage extends State<MyVideoLongPage> {
               return Material(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
-                  child: MyVideoImgItem(),
+                  child: MyVideoVideoItem(),
                 ),
               );
             }),
