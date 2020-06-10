@@ -109,6 +109,11 @@ class _VideoAppState extends State<VideoApp> {
                   ),
                 ),
               ),
+            VideoProgressIndicator(
+              _controller,
+              allowScrubbing: true,
+              padding: EdgeInsets.all(0),
+            ),
           ]),
         ),
       ),

@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/mybutton.dart';
-import 'package:skrtuvideo/component/myvideo_video_item.dart';
 import 'package:skrtuvideo/pages/myvideo_long_page.dart';
 import 'package:skrtuvideo/pages/myvideo_short_page.dart';
 
 import 'component/mygrid_view.dart';
 import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';
-import 'component/myvideo_player.dart';
 
 void main() {
   runApp(MyApp());

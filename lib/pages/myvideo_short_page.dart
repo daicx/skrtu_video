@@ -41,7 +41,7 @@ class _MyVideoShortPage extends State<MyVideoShortPage> {
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
               childAspectRatio: 17/13,
-                maxCrossAxisExtent:  600,
+                maxCrossAxisExtent:  800,
                 mainAxisSpacing: 5.0,
                 crossAxisSpacing: 5.0),
             itemCount: _items.length,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:skrtuvideo/component/myshort_video_item.dart';
 
-import 'myimg_item.dart';
 import 'myvideo_img_item.dart';
 
 class MyGridView extends StatefulWidget {
