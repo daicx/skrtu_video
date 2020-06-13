@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/mybutton.dart';
+import 'package:skrtuvideo/pages/chat_page.dart';
+import 'package:skrtuvideo/pages/friends_page.dart';
+import 'package:skrtuvideo/pages/myteams.dart';
 import 'package:skrtuvideo/pages/myvideo_long_page.dart';
 import 'package:skrtuvideo/pages/myvideo_short_page.dart';
+import 'package:skrtuvideo/pages/myworks.dart';
 
-import 'component/mygrid_view.dart';
 import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';
 
@@ -76,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
               '好友列表',
             ];
             tabBoby = [
-              MyGridView(),
-              MyGridView(),
+              ChatPage(),
+              FriendsPage(),
             ];
             break;
           }
@@ -85,8 +88,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           {
             _tabTitle = ['作品', '兔窝'];
             tabBoby = [
-              MyGridView(),
-              MyGridView(),
+              MyWorks(),
+              MyTeams(),
             ];
             break;
           }
