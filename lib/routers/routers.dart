@@ -6,6 +6,9 @@ class Routes {
 //路由管理
   static Router router;
   static String root = "/";
+  static String chat = "/chat";
+  static String friendDetail = "/friend_detail";
+  static String care = "/care";
 
   static void configureRoutes(Router router) {
     // 未发现对应route
@@ -15,7 +18,11 @@ class Routes {
           return;
         });
     router.define(root, handler: roothandle);
+    router.define(chat, handler: chathandle);
+    router.define(friendDetail, handler: friendDetailhandle);
+    router.define(care, handler: carehandle);
     Routes.router = router;
+
   }
   // 对参数进行encode，解决参数中有特殊字符，影响fluro路由匹配
   static Future navigateTo(BuildContext context, String path,

@@ -46,7 +46,24 @@ flutter:
     - imgs/me_select.png
     - imgs/img_default.png
     - imgs/discuss.png
+    - imgs/team.png
+    - imgs/room.png
     - imgs/user_default.png
+    - imgs/care.png
+    - imgs/history.png
+    - imgs/collect.png
+    - imgs/order.png
+    - imgs/fuli.png
+    - imgs/shop.png
+    - imgs/fankui.png
+    - imgs/set.png
+    - imgs/sun.png
+    - imgs/night.png
+    - imgs/version.png
+    - imgs/exit.png
+    - imgs/level.png
+    - imgs/level-1.png
+    - imgs/level-2.png
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

@@ -1,17 +1,22 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/mybutton.dart';
 import 'package:skrtuvideo/pages/chat_page.dart';
+import 'package:skrtuvideo/pages/drawer_page.dart';
 import 'package:skrtuvideo/pages/friends_page.dart';
 import 'package:skrtuvideo/pages/myteams.dart';
 import 'package:skrtuvideo/pages/myvideo_long_page.dart';
 import 'package:skrtuvideo/pages/myvideo_short_page.dart';
 import 'package:skrtuvideo/pages/myworks.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';
 
 void main() {
+  final router = Router();
+  Routes.configureRoutes(router);
   runApp(MyApp());
 }
 
@@ -39,14 +44,18 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   //当前选中的第几个底部菜单栏
-  int _selected ;
+  int _selected;
+
   String imgPath = 'imgs/';
 
-  TabController _controller ;
+  TabController _controller;
+
   List<String> _tabTitle = [];
   List<Widget> tabBoby;
+
   void _changeIndex(int index) {
     setState(() {
       _selected = index;
@@ -102,17 +111,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-     _controller = TabController(
+    _controller = TabController(
       length: 2,
       vsync: this,
     );
-     _changeIndex(0);
+    _changeIndex(0);
   }
-
 
   //组装tab标题和内容
   Map<TabBar, Widget> getTabBar(List<String> _tabTitle, List<Widget> tabBoby) {
-
     return {
       TabBar(
         controller: _controller, //控制器
@@ -176,10 +183,10 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ),
         ],
       ),
-      drawer: myDrawer(),
+      drawer: DrawerPage(),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
-        shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
+//        shape: CircularNotchedRectangle(), // 底部导航栏打一个圆形的洞
         child: Row(
           children: [
             MyFlatButton(
@@ -220,36 +227,11 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () => {}),
+      floatingActionButton: _selected == 2
+          ? null
+          : FloatingActionButton(child: Icon(Icons.add), onPressed: () => {}),
       body: getTabBar(_tabTitle, tabBoby).values.first,
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-
-  Drawer myDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-              child: Text("抽屉头部"),
-              decoration: BoxDecoration(color: Colors.green)),
-          ListTile(
-            title: Text('第一行'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: Text('第二行'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
 }

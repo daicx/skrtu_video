@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skrtuvideo/component/friend_detail.dart';
+import 'package:skrtuvideo/routers/router_hander.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,6 +63,7 @@ class _FriendsPage extends State<FriendsPage> {
           ),
         ),
       ),
+      if(MediaQuery.of(context).size.width>700)
       Expanded(
         flex: 5,
         child: Container(
@@ -68,114 +72,13 @@ class _FriendsPage extends State<FriendsPage> {
           child: Container(
             width: 400,
             height: 400,
-            child: getContent(),
+            child: FriendDetail(title: _datas[index]+index.toString(),),
           ),
         ),
       ),
     ]));
   }
 
-  Widget getContent() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Column(
-              children: [
-                Row(
-                  children: <Widget>[
-                    Text(
-                      _datas[index],
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.black, fontSize: 30),
-                    ),
-                    Image.asset(
-                      'imgs/img_default.png',
-                      width: 30,
-                      height: 30,
-                    ),
-                  ],
-                ),
-                Text(
-                  '发发发发发',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.grey, fontSize: 21),
-                ),
-              ],
-            ),
-            Spacer(),
-            Image.asset(
-              'imgs/user_default.png',
-              fit: BoxFit.fill,
-              width: 150,
-              height: 150,
-            )
-          ],
-        ),
-        Container(
-          color: Colors.grey,
-          margin: EdgeInsets.only(top: 10),
-          height: 1,
-        ),
-        Table(
-          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-          children: [
-            TableRow(children: [
-              Text(
-                '备注',
-                style: TextStyle( fontSize: 21),
-              ),
-              Text(
-                '哒哒哒哒',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-              ),
-            ]),
-            TableRow(children: [
-              Text(
-                '地区',
-                style: TextStyle( fontSize: 21),
-              ),
-              Text(
-                '在哪里',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-              ),
-            ]),
-            TableRow(children: [
-              Text(
-                '兔子号',
-                style: TextStyle( fontSize: 21),
-              ),
-              Text(
-                'adadad',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-              ),
-            ]),
-            TableRow(children: [
-              Text(
-                '来源',
-                style: TextStyle( fontSize: 21),
-              ),
-              Text(
-                '手机号添加',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
-              ),
-            ]),
-          ],
-        ),
-        Container(
-          color: Colors.grey,
-          margin: EdgeInsets.only(top: 10),
-          height: 1,
-        ),
-        RaisedButton(
-          color: Colors.green,
-          child: Text('发消息',style: TextStyle(color: Colors.white),),
-          onPressed: ()=>{},
-
-        ),
-      ],
-    );
-  }
 
   Widget getRow(int i) {
     return GestureDetector(
@@ -218,6 +121,8 @@ class _FriendsPage extends State<FriendsPage> {
       onTap: () {
         setState(() {
           index = i; //记录选中的下标
+          if(MediaQuery.of(context).size.width<700)
+          Routes.navigateTo(context, Routes.friendDetail,params: {'title': '众里寻他千百度'});
         });
       },
     );

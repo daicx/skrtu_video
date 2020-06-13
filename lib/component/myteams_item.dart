@@ -42,8 +42,8 @@ class _MyTeamsItem extends State<MyTeamsItem> {
               children: <Widget>[
                 Image.asset(
                   'imgs/img_default.png',
-                  width: 50,
-                  height: 50,
+                  width: 48,
+                  height: 48,
                 ),
               ],
             ),
@@ -55,7 +55,7 @@ class _MyTeamsItem extends State<MyTeamsItem> {
                     Text(
                       name,
                       textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.black, fontSize: 11),
+                      style: TextStyle(color: Colors.white, fontSize: 11),
                       textScaleFactor: 1.5,
                     ),
                     Image.asset(
@@ -72,39 +72,38 @@ class _MyTeamsItem extends State<MyTeamsItem> {
                 Text(
                   '关注 32 KW  活跃 333 KW',
                   textAlign: TextAlign.left,
-                  style: TextStyle(color: Colors.grey, fontSize: 4),
+                  style: TextStyle(color: Colors.white, fontSize: 4),
                 ),
               ],
             ),
             Spacer(),
             IconButton(
-              color: Colors.grey,
+              color: Colors.white,
               icon: Icon(Icons.exit_to_app),
               iconSize: 20,
               onPressed: () {},
             ),
           ],
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(13),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              '简介:',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+      body: InkWell(
+        hoverColor: Colors.green,
+        onHover: (a) {},
+        onTap: () {},
+        child: Container(
+          height: double.infinity,
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('imgs/room.png'), fit: BoxFit.fill)),
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, right: 20, top: 20),
+            child: Text(
+              '杜美蓉杜美蓉杜,美蓉杜美蓉蓉杜美蓉蓉杜美蓉蓉杜美蓉杜美蓉杜美蓉',
+              maxLines: 4,
+              style: TextStyle(fontSize: 17, color: Colors.blue),
             ),
-            Text(
-              '杜美蓉杜美蓉杜,美蓉杜美蓉杜美蓉杜美蓉',
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
+          ),
         ),
       ),
     );

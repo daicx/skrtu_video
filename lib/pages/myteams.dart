@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/myteams_item.dart';
+
 //我的小组
-class MyTeams extends StatefulWidget{
+class MyTeams extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return _MyTeams();
   }
-
 }
 
-class _MyTeams extends State<MyTeams>{
-
+class _MyTeams extends State<MyTeams> {
   final List<String> _items = [];
+  double width = 320.0;
 
   @override
   void initState() {
@@ -30,6 +30,7 @@ class _MyTeams extends State<MyTeams>{
       '1',
     ]);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +39,7 @@ class _MyTeams extends State<MyTeams>{
         padding: EdgeInsets.all(5),
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 320.0,
+                maxCrossAxisExtent: width,
                 mainAxisSpacing: 5.0,
                 crossAxisSpacing: 5.0),
             itemCount: _items.length,
@@ -46,7 +47,6 @@ class _MyTeams extends State<MyTeams>{
               return Material(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
-//                    color: Colors.green,
                   child: MyTeamsItem(),
                 ),
               );

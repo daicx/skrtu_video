@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
 
 class MyChatView extends StatefulWidget {
   final String title;
+
   @override
   _MyChatView createState() => _MyChatView();
 
@@ -47,6 +48,10 @@ class _MyChatView extends State<MyChatView> {
   var m = List<ChatMessage>();
 
   var i = 0;
+  Timer a;
+
+  Timer b;
+  Timer c;
 
   @override
   void initState() {
@@ -61,34 +66,43 @@ class _MyChatView extends State<MyChatView> {
   }
 
   void systemMessage() {
-    Timer(Duration(milliseconds: 300), () {
-      if (i < 4) {
-        setState(() {
-          messages = [...messages, m[i]];
-        });
-        i++;
+    a = Timer.periodic(Duration(milliseconds: 300), (timer) {
+      if (mounted) {
+        if (i < 4) {
+          setState(() {
+            messages = [...messages, m[i]];
+          });
+          i++;
+        }
       }
-      Timer(Duration(milliseconds: 300), () {
+    });
+    b = Timer.periodic(Duration(milliseconds: 300), (timer) {
+      if (mounted) {
         _chatViewKey.currentState.scrollController
           ..animateTo(
             _chatViewKey.currentState.scrollController.position.maxScrollExtent,
             curve: Curves.easeOut,
             duration: const Duration(milliseconds: 300),
           );
-      });
+      }
     });
   }
 
   void onSend(ChatMessage message) {
     print(message.toJson());
-    setState(() {
-      messages = [...messages, message];
-      print(messages.length);
-    });
+    if (mounted) {
+      setState(() {
+        messages = [...messages, message];
+        print(messages.length);
+      });
+    }
+
     if (i == 0) {
       systemMessage();
-      Timer(Duration(milliseconds: 600), () {
-        systemMessage();
+      c = Timer.periodic(Duration(milliseconds: 300), (timer) {
+        if (mounted) {
+          systemMessage();
+        }
       });
     } else {
       systemMessage();
@@ -130,7 +144,7 @@ class _MyChatView extends State<MyChatView> {
             border: Border.all(width: 0.0),
             color: Colors.white,
           ),
-         /* onQuickReply: (Reply reply) {
+          /* onQuickReply: (Reply reply) {
             setState(() {
               messages.add(ChatMessage(
                   text: reply.value, createdAt: DateTime.now(), user: user));
@@ -165,7 +179,7 @@ class _MyChatView extends State<MyChatView> {
           trailing: <Widget>[
             IconButton(
               icon: Icon(Icons.photo),
-              onPressed: () async {
+              onPressed: () {
                 /*File result = await ImagePicker.pickImage(
                   source: ImageSource.gallery,
                   imageQuality: 80,
@@ -176,5 +190,16 @@ class _MyChatView extends State<MyChatView> {
             )
           ],
         ));
+  }
+
+  @override
+  void dispose() {
+    a?.cancel();
+    b?.cancel();
+    c?.cancel();
+    a = null;
+    b = null;
+    c = null;
+    super.dispose();
   }
 }

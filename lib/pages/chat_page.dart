@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/chat_bubble.dart';
 import 'package:skrtuvideo/component/mychat_view.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,6 +45,8 @@ class _ChatPage extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    double wid = MediaQuery.of(context).size.width;
+
     return Scaffold(
         body:
             Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
@@ -58,16 +61,18 @@ class _ChatPage extends State<ChatPage> {
           ),
         ),
       ),
-      Expanded(
-        flex: 5,
-        child: Container(
-          color: Colors.greenAccent,
-          child: MyChatView(title: "众里寻他千百度"+index.toString(),),
+      if (wid > 700)
+        Expanded(
+          flex: 5,
+          child: Container(
+            color: Colors.greenAccent,
+            child: MyChatView(
+              title: "众里寻他千百度" + index.toString(),
+            ),
+          ),
         ),
-      ),
     ]));
   }
-
 
   Widget getRow(int i) {
     double notiSize = 20;
@@ -105,7 +110,7 @@ class _ChatPage extends State<ChatPage> {
                     '啊发防腐剂发防腐剂发防腐剂发防腐剂爱',
                     textAlign: TextAlign.left,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(color: Colors.black, fontSize: 20),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                   SizedBox(
                     height: 5,
@@ -114,7 +119,7 @@ class _ChatPage extends State<ChatPage> {
                     '大大大大大热',
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: Colors.grey, fontSize: 15),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   )
                 ],
               ),
@@ -156,7 +161,10 @@ class _ChatPage extends State<ChatPage> {
       ),
       onTap: () {
         setState(() {
-          index = i; //记录选中的下标
+          index = i;
+          //记录选中的下标
+          if(MediaQuery.of(context).size.width<700)
+          Routes.navigateTo(context, Routes.chat,params: {'title': '众里寻他千百度'});
         });
       },
     );

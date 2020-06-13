@@ -48,7 +48,7 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
           hoverColor: Colors.black12,
           onHover: (a) {
             setState(() {
-              hover = 5;
+              hover = 4;
             });
           },
           onTap: () => {},
@@ -59,9 +59,11 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
                 flex: 9,
                 child: Padding(
                   padding: EdgeInsets.all(hover),
-                  child:
-                  VideoApp(url:
-                  'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',color: Colors.white,),
+                  child: VideoApp(
+                    url:
+                        'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
+                    color: Colors.white,
+                  ),
 
                   /*Container(
 //                    color: Colors.red,
@@ -88,8 +90,7 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
                 children: <Widget>[
                   InkWell(
                     hoverColor: Colors.lightBlueAccent,
-                    onHover: (a) {
-                    },
+                    onHover: (a) {},
                     onTap: () => {},
                     child: Column(
                       children: <Widget>[
@@ -101,33 +102,30 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
                       ],
                     ),
                   ),
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       InkWell(
                         hoverColor: Colors.lightBlueAccent,
-                        onHover: (a) {
-                        },
+                        onHover: (a) {},
                         onTap: () => {},
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                name,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 11),
-                                textScaleFactor: 1.5,
-                              ),
-                              Image.asset(
-                                'imgs/img_default.png',
-                                width: 20,
-                                height: 20,
-                              ),
-                            ],
-                          ),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              name,
+                              textAlign: TextAlign.left,
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 11),
+                              textScaleFactor: 1.5,
+                            ),
+                            Image.asset(
+                              'imgs/img_default.png',
+                              width: 20,
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
-
                       Container(
                         height: 2,
                         color: Colors.white,
@@ -138,6 +136,11 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
                         style: TextStyle(color: Colors.grey, fontSize: 4),
                       ),
                     ],
+                  ),
+                  FlatButton.icon(
+                    icon: Icon(Icons.comment),
+                    onPressed: () => {},
+                    label: Text('30'),
                   ),
                   Spacer(),
                   Column(
@@ -161,6 +164,7 @@ class _MyVideoVideoItem extends State<MyVideoVideoItem> {
                       ),
                     ],
                   ),
+
                 ],
               )
             ],
