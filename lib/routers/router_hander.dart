@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:skrtuvideo/component/friend_detail.dart';
 import 'package:skrtuvideo/component/mychat_view.dart';
 import 'package:skrtuvideo/pages/mycare_page.dart';
+import 'package:skrtuvideo/pages/mycollect_page.dart';
+import 'package:skrtuvideo/pages/play_video_page.dart';
 
 import '../main.dart';
 
@@ -27,4 +29,12 @@ var friendDetailhandle =
 var carehandle =
     Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return MyCarePage();
+});
+var collecthandle =
+Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return MyCollectPage();
+});
+var watchthandle =
+Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return PlayVideoPage();
 });

@@ -96,6 +96,7 @@ class _DrawerPage extends State<DrawerPage> {
               ],
             ),
             onTap: () {
+              Navigator.pop(context);
               Routes.navigateTo(context, Routes.care);
             },
           ),
@@ -116,6 +117,7 @@ class _DrawerPage extends State<DrawerPage> {
             ),
             onTap: () {
               Navigator.pop(context);
+              Routes.navigateTo(context, Routes.collect);
             },
           ),
           ListTile(

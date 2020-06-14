@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:skrtuvideo/component/myvideo_img_item.dart';
-import 'package:skrtuvideo/component/myvideo_video_item.dart';
 
 //视频-长视频页面
 class MyVideoLongPage extends StatefulWidget {
@@ -47,7 +46,9 @@ class _MyVideoLongPage extends State<MyVideoLongPage> {
               return Material(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
-                  child: MyVideoImgItem(),
+                  child: MyVideoImgItem(
+                    id: index,
+                  ),
                 ),
               );
             }),

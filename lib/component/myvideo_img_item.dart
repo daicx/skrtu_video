@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 class MyVideoImgItem extends StatefulWidget {
   MyVideoImgItem({this.id = 0});
@@ -49,7 +50,7 @@ class _MyVideoImgItem extends State<MyVideoImgItem> {
               hover = 5;
             });
           },
-          onTap: () => {},
+          onTap: () => {Routes.navigateTo(context, Routes.watch)},
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -82,8 +83,7 @@ class _MyVideoImgItem extends State<MyVideoImgItem> {
                 children: <Widget>[
                   InkWell(
                     hoverColor: Colors.lightBlueAccent,
-                    onHover: (a) {
-                    },
+                    onHover: (a) {},
                     onTap: () => {},
                     child: Column(
                       children: <Widget>[
@@ -95,33 +95,30 @@ class _MyVideoImgItem extends State<MyVideoImgItem> {
                       ],
                     ),
                   ),
-
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       InkWell(
                         hoverColor: Colors.lightBlueAccent,
-                        onHover: (a) {
-                        },
+                        onHover: (a) {},
                         onTap: () => {},
-                          child: Row(
-                            children: <Widget>[
-                              Text(
-                                name,
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 11),
-                                textScaleFactor: 1.5,
-                              ),
-                              Image.asset(
-                                'imgs/img_default.png',
-                                width: 20,
-                                height: 20,
-                              ),
-                            ],
-                          ),
+                        child: Row(
+                          children: <Widget>[
+                            Text(
+                              name,
+                              textAlign: TextAlign.left,
+                              style:
+                              TextStyle(color: Colors.black, fontSize: 11),
+                              textScaleFactor: 1.5,
+                            ),
+                            Image.asset(
+                              'imgs/img_default.png',
+                              width: 20,
+                              height: 20,
+                            ),
+                          ],
+                        ),
                       ),
-
                       Container(
                         height: 2,
                         color: Colors.white,

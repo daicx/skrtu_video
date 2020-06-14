@@ -8,7 +8,9 @@ class Routes {
   static String root = "/";
   static String chat = "/chat";
   static String friendDetail = "/friend_detail";
-  static String care = "/care";
+  static String care = "/cares";
+  static String collect = "/collects";
+  static String watch = "/watchs";
 
   static void configureRoutes(Router router) {
     // 未发现对应route
@@ -21,6 +23,8 @@ class Routes {
     router.define(chat, handler: chathandle);
     router.define(friendDetail, handler: friendDetailhandle);
     router.define(care, handler: carehandle);
+    router.define(collect, handler: collecthandle);
+    router.define(watch, handler: watchthandle);
     Routes.router = router;
 
   }
