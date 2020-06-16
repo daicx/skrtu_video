@@ -99,7 +99,7 @@ class _MyTeamsItem extends State<MyTeamsItem> {
           child: Padding(
             padding: EdgeInsets.only(left: 30, right: 20, top: 20),
             child: Text(
-              '杜美蓉杜美蓉杜,美蓉杜美蓉蓉杜美蓉蓉杜美蓉蓉杜美蓉杜美蓉杜美蓉',
+              '长风破浪长风破浪长风,破浪长风破浪蓉长风破浪蓉长风破浪蓉长风破浪长风破浪长风破浪',
               maxLines: 4,
               style: TextStyle(fontSize: 17, color: Colors.blue),
             ),

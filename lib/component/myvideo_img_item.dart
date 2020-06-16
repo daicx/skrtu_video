@@ -73,7 +73,7 @@ class _MyVideoImgItem extends State<MyVideoImgItem> {
               Expanded(
                 flex: 2,
                 child: Text(
-                  '杜美蓉杜美蓉杜222,美蓉杜美蓉杜美蓉杜美蓉',
+                  '长风破浪长风破浪长风222,破浪长风破浪长风破浪长风破浪',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 17),

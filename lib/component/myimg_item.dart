@@ -111,7 +111,7 @@ class _MyImgItem extends State<MyImgItem> {
             Expanded(
               flex: 1,
               child: Text(
-                '杜美蓉杜美蓉杜,美蓉杜美蓉杜美蓉杜美蓉',
+                '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 17),
