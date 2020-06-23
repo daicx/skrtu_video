@@ -14,6 +14,8 @@ class MyStateGridView extends StatefulWidget {
 
 class _MyStateGridView extends State<MyStateGridView> {
   final List<String> _items = [];
+  int colCount = 2;
+
 
   @override
   void initState() {
@@ -32,9 +34,17 @@ class _MyStateGridView extends State<MyStateGridView> {
     ]);
   }
 
+
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+//    double width = MediaQuery.of(context).size.width;
+//    int count = getColCount(width);
+    setState(() {
+      colCount = getColCount(MediaQuery
+          .of(context)
+          .size
+          .width);
+    });
     return Scaffold(
       backgroundColor: Colors.black12,
       body: Padding(
@@ -65,7 +75,10 @@ class _MyStateGridView extends State<MyStateGridView> {
           },
           staggeredTileBuilder: (int index) =>
               new StaggeredTile.count(2, index.isEven ? 2 : 1.65),
-          crossAxisCount: getColCount(width),
+          crossAxisCount: getColCount(MediaQuery
+              .of(context)
+              .size
+              .width),
 //        maxCrossAxisExtent: 400,
         ),
       ),

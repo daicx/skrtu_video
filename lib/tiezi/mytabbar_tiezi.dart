@@ -2,16 +2,18 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/mystate_grid_view.dart';
 
-class MyTabBar extends StatefulWidget {
+import 'my_tiezi_content_list.dart';
+
+//控制评论和下一个播放
+class MyTabBarTiezi extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _MyTabBar();
+    return _MyTabBarTiezi();
   }
 }
 
-class _MyTabBar extends State<MyTabBar> {
+class _MyTabBarTiezi extends State<MyTabBarTiezi> {
   int _selected = 0;
   String bodyContent;
   final List<String> _tabValues = [];
@@ -21,15 +23,10 @@ class _MyTabBar extends State<MyTabBar> {
   void initState() {
     super.initState();
     _tabValues.addAll([
-      '热榜',
-      '问答',
-      '图片',
-      '娱乐',
-      '科技',
-      '军事',
-      '游戏',
-      '搞笑',
-      '漫画',
+      '看帖',
+      '精华',
+      '视频',
+      '兔窝',
     ]);
     _controller = TabController(
       length: _tabValues.length,
@@ -42,25 +39,18 @@ class _MyTabBar extends State<MyTabBar> {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
+        backgroundColor: Colors.white,
         title: Center(child: getTabBar()),
-        actions: <Widget>[
-          new Container(
-            child: IconButton(
-              onPressed: () {
-                _controller.animateTo(
-                    _controller.index < _controller.length -1? _controller.index + 1 : 0);
-              },
-              icon: Icon(Icons.arrow_right),
-            ),
-            width: 48,
-          )
-        ],
       ),
       body: TabBarView(
         controller: _controller,
-        children: _tabValues.map((f) {
-          return MyStateGridView();
-        }).toList(),
+        children: [
+//          MyComponentView(),
+          MyTieziContentList(),
+          MyTieziContentList(),
+          MyTieziContentList(),
+          MyTieziContentList(),
+        ],
       ),
     );
   }
@@ -72,18 +62,16 @@ class _MyTabBar extends State<MyTabBar> {
       indicatorSize: TabBarIndicatorSize.label,
       tabs: _tabValues.map((e) {
         return Container(
-          height: 50,
+          height: 40,
           width: 80,
           alignment: Alignment.center,
-          child: Text(e),
+          child: Text(
+            e,
+            style:
+                TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
+          ),
         );
       }).toList(),
     );
-  }
-
-  void onItemTrap(int index) {
-    setState(() {
-      _selected = index;
-    });
   }
 }

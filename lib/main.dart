@@ -5,6 +5,7 @@ import 'package:skrtuvideo/component/mybutton.dart';
 import 'package:skrtuvideo/pages/chat_page.dart';
 import 'package:skrtuvideo/pages/drawer_page.dart';
 import 'package:skrtuvideo/pages/friends_page.dart';
+import 'package:skrtuvideo/pages/mysubmit_page.dart';
 import 'package:skrtuvideo/pages/myteams.dart';
 import 'package:skrtuvideo/pages/myvideo_long_page.dart';
 import 'package:skrtuvideo/pages/myvideo_short_page.dart';
@@ -229,7 +230,18 @@ class _MyHomePageState extends State<MyHomePage>
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _selected == 2
           ? null
-          : FloatingActionButton(child: Icon(Icons.add), onPressed: () => {}),
+          : FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () =>
+          {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext build) {
+                  return Center(
+                      child: MySubmitPage()
+                  );
+                })
+          }),
       body: getTabBar(_tabTitle, tabBoby).values.first,
       // This trailing comma makes auto-formatting nicer for build methods.
     );
