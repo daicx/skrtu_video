@@ -12,19 +12,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Material",
-      home: WhatArtical(),
+      home: WhatArticle(),
     );
   }
 }
 
-class WhatArtical extends StatefulWidget {
+class WhatArticle extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return _WhatArtical();
+    return _WhatArticle();
   }
 }
 
-class _WhatArtical extends State<WhatArtical> {
+class _WhatArticle extends State<WhatArticle> {
   bool sign = false;
   bool care = false;
   int contentLine = 4;
@@ -52,6 +52,26 @@ class _WhatArtical extends State<WhatArtical> {
   Widget build(BuildContext context) {
     double wid = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Image.asset(
+              'imgs/img_default.png',
+              width: 50,
+              height: 50,
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                '地下城与勇士吧',
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15),
+                textScaleFactor: 1.5,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: Row(
           children: [
@@ -65,134 +85,10 @@ class _WhatArtical extends State<WhatArtical> {
             Expanded(
               flex: 4,
               child: Container(
-                color: Colors.grey,
+//                color: Colors.grey,
                 padding: EdgeInsets.only(top: 0, bottom: 0),
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.red, Colors.orange[700]]),
-                          //背景渐变
-                          borderRadius: BorderRadius.circular(10.0),
-                          //3像素圆角
-                          boxShadow: [
-                            //阴影
-                            BoxShadow(
-                                color: Colors.black54,
-                                offset: Offset(2.0, 2.0),
-                                blurRadius: 4.0)
-                          ]),
-                      height: 200,
-                      alignment: Alignment.bottomLeft,
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  'imgs/img_default.png',
-                                  width: 150,
-                                  height: 150,
-                                ),
-                                InkWell(
-                                  onTap: () {},
-                                  child: Text(
-                                    '地下城与勇士吧',
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                    textScaleFactor: wid >= 600 ? 1.5 : 1.3,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            alignment: Alignment.bottomLeft,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  height: 40,
-                                  alignment: Alignment.bottomLeft,
-                                  padding: EdgeInsets.only(left: 50),
-                                  child: Text(
-                                    '关注：12,014,836  贴子：441,373,635',
-                                    maxLines: 3,
-                                    style: TextStyle(
-                                        fontSize: 15, color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                              RaisedButton(
-                                color: care ? Colors.blue : Colors.blueAccent,
-                                onPressed: () {
-                                  setState(() {
-                                    care = !care;
-                                  });
-                                },
-                                child: Text(
-                                  care ? '已关注' : '关注',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              if (wid >= 800) Spacer(),
-                              RaisedButton(
-                                color: sign ? Colors.blue : Colors.blueAccent,
-                                onPressed: () {
-                                  setState(() {
-                                    sign = !sign;
-                                  });
-                                },
-                                child: Text(
-                                  sign ? '已签到' : '签到',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.white),
-//                      padding: EdgeInsets.only(top: 5),
-                      child: Row(
-                        children: [
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text('看帖'),
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text('精华'),
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text('视频'),
-                          ),
-                          FlatButton(
-                            onPressed: () {},
-                            child: Text('兔窝'),
-                          ),
-                        ],
-                      ),
-                    ),
                     Column(
                       children: [
                         Row(
@@ -238,16 +134,27 @@ class _WhatArtical extends State<WhatArtical> {
                               ],
                             ),
                             Spacer(),
-                            FlatButton.icon(
-                              onPressed: () => {},
-                              icon: Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                              ),
-                              label: Text('212'),
-                              textColor: Colors.black,
-                              highlightColor: Colors.lightBlueAccent,
-                              splashColor: Colors.lightBlueAccent,
+                            Column(
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 60,
+                                  height: 30,
+                                  child: FlatButton(
+                                    color: Colors.lightBlueAccent,
+                                    highlightColor: Colors.blue[700],
+                                    colorBrightness: Brightness.dark,
+                                    splashColor: Colors.grey,
+                                    child: Text(
+                                      "关注",
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0)),
+                                    onPressed: () {},
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -278,6 +185,33 @@ class _WhatArtical extends State<WhatArtical> {
                           ),
                         ),
                       ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white),
+//                      padding: EdgeInsets.only(top: 5),
+                      child: Row(
+                        children: [
+                          FlatButton(
+                            onPressed: () {},
+                            child: Text('看帖'),
+                          ),
+                          FlatButton(
+                            onPressed: () {},
+                            child: Text('精华'),
+                          ),
+                          FlatButton(
+                            onPressed: () {},
+                            child: Text('视频'),
+                          ),
+                          FlatButton(
+                            onPressed: () {},
+                            child: Text('兔窝'),
+                          ),
+                        ],
+                      ),
                     ),
                     for (var i in _items)
                       Column(
