@@ -1,6 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:skrtuvideo/routers/router_hander.dart';
+import 'package:skrtu/routers/router_hander.dart';
 
 class Routes {
 //路由管理

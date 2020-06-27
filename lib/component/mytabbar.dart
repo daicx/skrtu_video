@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/mystate_grid_view.dart';
+import 'package:skrtu/component/mystate_grid_view.dart';
 
 class MyTabBar extends StatefulWidget {
   @override

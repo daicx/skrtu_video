@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:skrtuvideo/component/myvideo_img_item.dart';
-import 'package:skrtuvideo/component/myvideo_video_item.dart';
+import 'package:skrtu/component/myvideo_video_item.dart';
 //视频-短视频页面
 class MyVideoShortPage extends StatefulWidget {
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/myvideo_play.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/component/myvideo_play.dart';
+import 'package:skrtu/routers/routers.dart';
 
 class MyShortVideoItem extends StatefulWidget {
   MyShortVideoItem({this.id = 0});

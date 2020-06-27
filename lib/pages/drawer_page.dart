@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/routers/routers.dart';
 
 class DrawerPage extends StatefulWidget {
   @override

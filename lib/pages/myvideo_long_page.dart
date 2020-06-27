@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:skrtuvideo/component/myvideo_img_item.dart';
+import 'package:skrtu/component/myvideo_img_item.dart';
 
 //视频-长视频页面
 class MyVideoLongPage extends StatefulWidget {

@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/tiezi/my_tiezi_content_list.dart';
 
 void main() => runApp(MyApp());
 

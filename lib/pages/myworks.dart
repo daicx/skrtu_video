@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/myteams_item.dart';
-import 'package:skrtuvideo/component/mywork_item.dart';
+import 'package:skrtu/component/mywork_item.dart';
 //我的小组
 class MyWorks extends StatefulWidget{
   @override

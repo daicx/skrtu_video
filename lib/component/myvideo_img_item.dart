@@ -2,7 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/routers/routers.dart';
 
 class MyVideoImgItem extends StatefulWidget {
   MyVideoImgItem({this.id = 0});

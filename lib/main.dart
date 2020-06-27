@@ -1,16 +1,16 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/mybutton.dart';
-import 'package:skrtuvideo/pages/chat_page.dart';
-import 'package:skrtuvideo/pages/drawer_page.dart';
-import 'package:skrtuvideo/pages/friends_page.dart';
-import 'package:skrtuvideo/pages/mysubmit_page.dart';
-import 'package:skrtuvideo/pages/myteams.dart';
-import 'package:skrtuvideo/pages/myvideo_long_page.dart';
-import 'package:skrtuvideo/pages/myvideo_short_page.dart';
-import 'package:skrtuvideo/pages/myworks.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/component/mybutton.dart';
+import 'package:skrtu/pages/chat_page.dart';
+import 'package:skrtu/pages/drawer_page.dart';
+import 'package:skrtu/pages/friends_page.dart';
+import 'package:skrtu/pages/mysubmit_page.dart';
+import 'package:skrtu/pages/myteams.dart';
+import 'package:skrtu/pages/myvideo_long_page.dart';
+import 'package:skrtu/pages/myvideo_short_page.dart';
+import 'package:skrtu/pages/myworks.dart';
+import 'package:skrtu/routers/routers.dart';
 
 import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';

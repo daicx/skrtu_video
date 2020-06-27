@@ -1,11 +1,11 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:skrtuvideo/component/friend_detail.dart';
-import 'package:skrtuvideo/component/mychat_view.dart';
-import 'package:skrtuvideo/pages/mycare_page.dart';
-import 'package:skrtuvideo/pages/mycollect_page.dart';
-import 'package:skrtuvideo/pages/play_video_page.dart';
-import 'package:skrtuvideo/pages/watch_article.dart';
+import 'package:skrtu/component/friend_detail.dart';
+import 'package:skrtu/component/mychat_view.dart';
+import 'package:skrtu/pages/mycare_page.dart';
+import 'package:skrtu/pages/mycollect_page.dart';
+import 'package:skrtu/pages/play_video_page.dart';
+import 'package:skrtu/pages/watch_article.dart';
 
 import '../main.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/level_icon.dart';
+import 'package:skrtu/component/level_icon.dart';
 
 void main() => runApp(MyApp());
 

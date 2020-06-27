@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/friend_detail.dart';
-import 'package:skrtuvideo/routers/router_hander.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/component/friend_detail.dart';
+import 'package:skrtu/routers/routers.dart';
 
 void main() => runApp(MyApp());
 

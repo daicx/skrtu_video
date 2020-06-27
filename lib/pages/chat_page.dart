@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/chat_bubble.dart';
-import 'package:skrtuvideo/component/mychat_view.dart';
-import 'package:skrtuvideo/routers/routers.dart';
+import 'package:skrtu/component/mychat_view.dart';
+import 'package:skrtu/routers/routers.dart';
 
 void main() => runApp(MyApp());
 

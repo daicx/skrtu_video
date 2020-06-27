@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/mytabbar_video.dart';
-import 'package:skrtuvideo/component/myvideo_play.dart';
+import 'package:skrtu/component/mytabbar_video.dart';
+import 'package:skrtu/component/myvideo_play.dart';
 
 void main() => runApp(MyApp());
 

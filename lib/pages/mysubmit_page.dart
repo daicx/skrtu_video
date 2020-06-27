@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:skrtuvideo/component/mybutton.dart';
+import 'package:skrtu/component/mybutton.dart';
 
 void main() => runApp(MyApp());
 
