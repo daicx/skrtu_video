@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 class MyImgItem extends StatefulWidget {
   MyImgItem({this.id = 0});
@@ -119,15 +120,13 @@ class _MyImgItem extends State<MyImgItem> {
             ),
             Expanded(
               flex: 9,
-              child: InkWell(
-                hoverColor: Colors.black12,
-                onHover: (a) {
+              child: FlatButton(
+                onPressed: () {
+                  Routes.navigateTo(context, Routes.whatArticle);
                 },
-                onTap: () => {},
                 child: Container(
-//                    color: Colors.red,
                   child: GridView.builder(
-                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: getCount(_items.length),
                           childAspectRatio: getRatio(_items.length),

@@ -98,6 +98,7 @@ class _MyVideoImgItem extends State<MyVideoImgItem> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+
                       InkWell(
                         hoverColor: Colors.lightBlueAccent,
                         onHover: (a) {},

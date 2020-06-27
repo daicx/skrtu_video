@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtuvideo/component/myvideo_play.dart';
+import 'package:skrtuvideo/routers/routers.dart';
 
 class MyShortVideoItem extends StatefulWidget {
 
@@ -127,7 +128,7 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   FlatButton.icon(
-                    onPressed: () => {},
+                    onPressed: () => {Routes.navigateTo(context, Routes.watch)},
                     icon: Icon(Icons.comment),
                     label: Text('评论'),
                     textColor: Colors.black54,

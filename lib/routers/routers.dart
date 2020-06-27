@@ -11,6 +11,7 @@ class Routes {
   static String care = "/cares";
   static String collect = "/collects";
   static String watch = "/watchs";
+  static String whatArticle = "/what_article";
 
   static void configureRoutes(Router router) {
     // 未发现对应route
@@ -25,6 +26,7 @@ class Routes {
     router.define(care, handler: carehandle);
     router.define(collect, handler: collecthandle);
     router.define(watch, handler: watchthandle);
+    router.define(whatArticle, handler: whatArticlehandle);
     Routes.router = router;
 
   }

@@ -5,6 +5,7 @@ import 'package:skrtuvideo/component/mychat_view.dart';
 import 'package:skrtuvideo/pages/mycare_page.dart';
 import 'package:skrtuvideo/pages/mycollect_page.dart';
 import 'package:skrtuvideo/pages/play_video_page.dart';
+import 'package:skrtuvideo/pages/watch_article.dart';
 
 import '../main.dart';
 
@@ -37,4 +38,8 @@ Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
 var watchthandle =
 Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return PlayVideoPage();
+});
+var whatArticlehandle =
+Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return WhatArticle();
 });

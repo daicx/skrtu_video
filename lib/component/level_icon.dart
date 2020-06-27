@@ -10,15 +10,15 @@ class LevelIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: 30,
-      height: 30,
+      width: 20,
+      height: 20,
       decoration: BoxDecoration(
           image: DecorationImage(
         image: AssetImage(getImg()),
       )),
       child: Text(
         lv.toString(),
-        style: TextStyle(fontSize: 10, color: Colors.white),
+        style: TextStyle(fontSize: 5, color: Colors.white),
       ),
     );
   }
