@@ -4,7 +4,6 @@ import 'package:skrtuvideo/component/myvideo_play.dart';
 import 'package:skrtuvideo/routers/routers.dart';
 
 class MyShortVideoItem extends StatefulWidget {
-
   MyShortVideoItem({this.id = 0});
 
   final int id;
@@ -17,15 +16,20 @@ class MyShortVideoItem extends StatefulWidget {
 
 class _MyShortVideoItem extends State<MyShortVideoItem> {
   String name;
+
   //网络请求,获取详情
   @override
   void initState() {
     super.initState();
     name = '视频作者';
-
   }
+
   @override
   Widget build(BuildContext context) {
+    double wid = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Scaffold(
 //      appBar: AppBar(
 //        title: ,
@@ -106,14 +110,24 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                 '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(
+                    fontSize: MediaQuery
+                        .of(context)
+                        .size
+                        .width < 400 ? 13 : 17),
               ),
             ),
             Expanded(
               flex: 9,
 //              child: MyVideoPlayer()
-              child: VideoApp(url:
-                'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',color: Colors.white,)
+              child: AspectRatio(
+                aspectRatio: 15 / 9,
+                child: MyVideo(
+                  url:
+                  'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
+                  color: Colors.white,
+                ),
+              ),
             ),
             Expanded(
               flex: 1,
@@ -157,6 +171,4 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
       ),
     );
   }
-
-
 }

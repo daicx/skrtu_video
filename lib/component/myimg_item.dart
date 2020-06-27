@@ -115,7 +115,10 @@ class _MyImgItem extends State<MyImgItem> {
                 '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 17),
+                style: TextStyle(fontSize: MediaQuery
+                    .of(context)
+                    .size
+                    .width < 400 ? 13 : 17),
               ),
             ),
             Expanded(

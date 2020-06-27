@@ -4,30 +4,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-/*void main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Material",
-      home: VideoApp(),
+      home: MyVideo(),
     );
   }
-}*/
+}
 
-class VideoApp extends StatefulWidget {
-  VideoApp({this.url, this.title, this.color});
+class MyVideo extends StatefulWidget {
+  MyVideo({this.url =
+  'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
+    this.title,
+    this.color});
 
   final String url;
   final String title;
   final Color color;
 
   @override
-  _VideoAppState createState() => _VideoAppState();
+  _MyVideo createState() => _MyVideo();
 }
 
-class _VideoAppState extends State<VideoApp> {
+class _MyVideo extends State<MyVideo> {
   VideoPlayerController _controller;
   Duration videoLength;
   Duration videoPoision;
@@ -202,30 +205,41 @@ class _VideoAppState extends State<VideoApp> {
             SizedBox(
               width: 10,
             ),
-            IconButton(
-              color: Colors.white,
+            FlatButton.icon(
               onPressed: () {
                 setState(() {
                   volume = -volume;
                   _controller.setVolume(volume > 0 ? volume : 0);
                 });
               },
-              icon: Icon(getVolume(volume > 0 ? volume : 0)),
+              icon: Icon(
+                getVolume(volume > 0 ? volume : 0),
+                color: Colors.white,
+              ),
+              label: Container(
+                child: (MediaQuery
+                    .of(context)
+                    .size
+                    .width >= 500)
+                    ? Slider(
+                  activeColor: Colors.white,
+                  inactiveColor: Colors.grey,
+                  onChanged: (double _volume) {
+                    setState(() {
+                      volume = _volume;
+                      _controller.setVolume(_volume);
+                    });
+                  },
+                  value: volume > 0 ? volume : 0,
+                  min: 0,
+                  max: 1,
+                )
+                    : null,
+              ),
             ),
-            Slider(
-              activeColor: Colors.white,
-              inactiveColor: Colors.grey,
-              onChanged: (double _volume) {
-                setState(() {
-                  volume = _volume;
-                  _controller.setVolume(_volume);
-                });
-              },
-              value: volume > 0 ? volume : 0,
-              min: 0,
-              max: 1,
-            ),
+
             Spacer(),
+            //全屏按钮
             IconButton(
               onPressed: () {
 //                _toggleFullScreen();

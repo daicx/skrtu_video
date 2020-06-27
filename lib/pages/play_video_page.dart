@@ -82,7 +82,7 @@ class _PlayVideoPage extends State<PlayVideoPage> {
       children: [
         AspectRatio(
           aspectRatio: 17 / 10,
-          child: VideoApp(
+          child: MyVideo(
             url:
                 'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
             color: Colors.white,
