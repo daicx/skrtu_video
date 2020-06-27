@@ -65,14 +65,8 @@ class _MyCollectPage extends State<MyCollectPage> {
                 child: Container(
                   child: Padding(
                     padding: EdgeInsets.all(8),
-                    child: InkWell(
-                      hoverColor: Colors.black12,
-                      onHover: (a) {
-                        setState(() {
-                          hover = 5;
-                        });
-                      },
-                      onTap: () => {},
+                    child: FlatButton(
+                      onPressed: () {},
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
