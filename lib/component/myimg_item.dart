@@ -1,9 +1,14 @@
 import 'dart:html';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:skrtu/pages/myshare_page.dart';
 import 'package:skrtu/routers/routers.dart';
 
+import 'level_icon.dart';
+
+//首页--图片
 class MyImgItem extends StatefulWidget {
   MyImgItem({this.id = 0});
 
@@ -19,6 +24,8 @@ class _MyImgItem extends State<MyImgItem> {
   String name;
   Color click;
   final List<String> _items = [];
+  bool _care = false;
+  bool _zan = false;
 
   //网络请求,获取详情
   @override
@@ -31,15 +38,12 @@ class _MyImgItem extends State<MyImgItem> {
       '1',
       '1',
     ]);
+    _care = Random.secure().nextBool();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        title: ,
-//        backgroundColor: Colors.white,
-//      ),
       body: Padding(
         padding: EdgeInsets.all(13),
         child: Column(
@@ -67,10 +71,8 @@ class _MyImgItem extends State<MyImgItem> {
                           style: TextStyle(color: Colors.black, fontSize: 11),
                           textScaleFactor: 1.5,
                         ),
-                        Image.asset(
-                          'imgs/img_default.png',
-                          width: 20,
-                          height: 20,
+                        LevelIcon(
+                          lv: widget.id,
                         ),
                       ],
                     ),
@@ -89,7 +91,7 @@ class _MyImgItem extends State<MyImgItem> {
                 Column(
                   children: <Widget>[
                     SizedBox(
-                      width: 60,
+                      width: 65,
                       height: 30,
                       child: FlatButton(
                         color: Colors.lightBlueAccent,
@@ -97,12 +99,16 @@ class _MyImgItem extends State<MyImgItem> {
                         colorBrightness: Brightness.dark,
                         splashColor: Colors.grey,
                         child: Text(
-                          "关注",
+                          _care ? "已关注" : "关注",
                           style: TextStyle(fontSize: 10),
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _care = !_care;
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -115,10 +121,9 @@ class _MyImgItem extends State<MyImgItem> {
                 '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: MediaQuery
-                    .of(context)
-                    .size
-                    .width < 400 ? 13 : 17),
+                style: TextStyle(
+                    fontSize:
+                        MediaQuery.of(context).size.width < 400 ? 13 : 17),
               ),
             ),
             Expanded(
@@ -151,7 +156,14 @@ class _MyImgItem extends State<MyImgItem> {
               child: Row(
                 children: <Widget>[
                   FlatButton.icon(
-                    onPressed: () => {},
+                    onPressed: () =>
+                    {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext build) {
+                            return Center(child: MySharePage());
+                          })
+                    },
                     icon: Icon(Icons.share),
                     label: Text('分享'),
                     textColor: Colors.black54,
@@ -159,7 +171,8 @@ class _MyImgItem extends State<MyImgItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   FlatButton.icon(
-                    onPressed: () => {},
+                    onPressed: () =>
+                    {Routes.navigateTo(context, Routes.whatArticle)},
                     icon: Icon(Icons.comment),
                     label: Text('评论'),
                     textColor: Colors.black54,
@@ -167,9 +180,19 @@ class _MyImgItem extends State<MyImgItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   FlatButton.icon(
-                    onPressed: () => {},
-                    icon: Icon(Icons.favorite_border),
-                    label: Text('点赞'),
+                    onPressed: () =>
+                    {
+                      setState(() {
+                        _zan = !_zan;
+                      })
+                    },
+                    icon: _zan
+                        ? Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    )
+                        : Icon(Icons.favorite_border),
+                    label: Text(_zan ? '取消赞' : '点赞'),
                     textColor: Colors.black54,
                     highlightColor: Colors.lightBlueAccent,
                     splashColor: Colors.lightBlueAccent,

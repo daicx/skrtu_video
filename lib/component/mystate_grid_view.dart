@@ -5,6 +5,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'myimg_item.dart';
 import 'myshort_video_item.dart';
 
+//首页
 class MyStateGridView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -59,7 +60,7 @@ class _MyStateGridView extends State<MyStateGridView> {
               return Material(
                 child: Container(
                   child: MyImgItem(
-                    id: 1,
+                    id: index,
                   ),
                 ),
                 borderRadius: BorderRadius.circular(10.0),
@@ -74,12 +75,9 @@ class _MyStateGridView extends State<MyStateGridView> {
             }
           },
           staggeredTileBuilder: (int index) =>
-              new StaggeredTile.count(2, index.isEven ? 2 : 1.65),
-          crossAxisCount: getColCount(MediaQuery
-              .of(context)
-              .size
-              .width),
-//        maxCrossAxisExtent: 400,
+          new StaggeredTile.count(2, index.isEven ? 2 : 1.65),
+          crossAxisCount: colCount,
+//        maxCrossAxisExtent: 500,
         ),
       ),
     );
