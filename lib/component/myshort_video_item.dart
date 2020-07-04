@@ -1,8 +1,13 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtu/component/myvideo_play.dart';
+import 'package:skrtu/pages/myshare_page.dart';
 import 'package:skrtu/routers/routers.dart';
 
+import 'level_icon.dart';
+
+//首页-视频
 class MyShortVideoItem extends StatefulWidget {
   MyShortVideoItem({this.id = 0});
 
@@ -16,6 +21,8 @@ class MyShortVideoItem extends StatefulWidget {
 
 class _MyShortVideoItem extends State<MyShortVideoItem> {
   String name;
+  bool _care = false;
+  bool _zan = false;
 
   //网络请求,获取详情
   @override
@@ -26,15 +33,7 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
 
   @override
   Widget build(BuildContext context) {
-    double wid = MediaQuery
-        .of(context)
-        .size
-        .width;
     return Scaffold(
-//      appBar: AppBar(
-//        title: ,
-//        backgroundColor: Colors.white,
-//      ),
       body: Padding(
         padding: EdgeInsets.all(13),
         child: Column(
@@ -44,10 +43,13 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Image.asset(
-                      'imgs/img_default.png',
-                      width: 50,
-                      height: 50,
+                    InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        'imgs/img_default.png',
+                        width: 50,
+                        height: 50,
+                      ),
                     ),
                   ],
                 ),
@@ -56,16 +58,17 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text(
-                          name,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.black, fontSize: 11),
-                          textScaleFactor: 1.5,
+                        InkWell(
+                          onTap: () {},
+                          child: AutoSizeText(
+                            name,
+                            style: TextStyle(fontSize: 20),
+                            minFontSize: 10,
+                            maxLines: 1,
+                          ),
                         ),
-                        Image.asset(
-                          'imgs/img_default.png',
-                          width: 20,
-                          height: 20,
+                        LevelIcon(
+                          lv: widget.id,
                         ),
                       ],
                     ),
@@ -76,7 +79,7 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                     Text(
                       '关注 32 KW  活跃 333 KW',
                       textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.grey, fontSize: 4),
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
                     ),
                   ],
                 ),
@@ -84,7 +87,7 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                 Column(
                   children: <Widget>[
                     SizedBox(
-                      width: 60,
+                      width: 65,
                       height: 30,
                       child: FlatButton(
                         color: Colors.lightBlueAccent,
@@ -92,30 +95,29 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                         colorBrightness: Brightness.dark,
                         splashColor: Colors.grey,
                         child: Text(
-                          "关注",
+                          _care ? "已关注" : "关注",
                           style: TextStyle(fontSize: 10),
                         ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            _care = !_care;
+                          });
+                        },
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    fontSize: MediaQuery
-                        .of(context)
-                        .size
-                        .width < 400 ? 13 : 17),
-              ),
+            AutoSizeText(
+              '  ' + '长风破浪长浪长风破浪长风破浪',
+              maxLines: 1,
+              style: TextStyle(fontSize: 20),
+              minFontSize: 10,
+              stepGranularity: 10,
+              overflow: TextOverflow.ellipsis,
             ),
             Expanded(
               flex: 9,
@@ -124,7 +126,7 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                 aspectRatio: 15 / 9,
                 child: MyVideo(
                   url:
-                  'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
+                      'https://cloud.video.taobao.com//play/u/153810888/p/2/e/6/t/1/266102583124.mp4',
                   color: Colors.white,
                 ),
               ),
@@ -134,7 +136,14 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
               child: Row(
                 children: <Widget>[
                   FlatButton.icon(
-                    onPressed: () => {},
+                    onPressed: () =>
+                    {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext build) {
+                            return Center(child: MySharePage());
+                          })
+                    },
                     icon: Icon(Icons.share),
                     label: Text('分享'),
                     textColor: Colors.black54,
@@ -142,7 +151,8 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   FlatButton.icon(
-                    onPressed: () => {Routes.navigateTo(context, Routes.watch)},
+                    onPressed: () =>
+                    {Routes.navigateTo(context, Routes.watch)},
                     icon: Icon(Icons.comment),
                     label: Text('评论'),
                     textColor: Colors.black54,
@@ -150,18 +160,53 @@ class _MyShortVideoItem extends State<MyShortVideoItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   FlatButton.icon(
-                    onPressed: () => {},
-                    icon: Icon(Icons.favorite_border),
-                    label: Text('点赞'),
+                    onPressed: () =>
+                    {
+                      setState(() {
+                        _zan = !_zan;
+                      })
+                    },
+                    icon: _zan
+                        ? Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    )
+                        : Icon(Icons.favorite_border),
+                    label: Text(_zan ? '取消赞' : '点赞'),
                     textColor: Colors.black54,
                     highlightColor: Colors.lightBlueAccent,
                     splashColor: Colors.lightBlueAccent,
                   ),
                   Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.more_vert),
-                    color: Colors.black54,
+                  PopupMenuButton(
+                    tooltip: "更多",
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Colors.black54,
+                    ),
+                    onSelected: (va) {
+                      print(va);
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return <PopupMenuEntry<String>>[
+                        PopupMenuItem<String>(
+                          value: '0',
+                          child: Text('收藏'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '1',
+                          child: Text('举报'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '2',
+                          child: Text('不感兴趣'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '3',
+                          child: Text('加入播放队列'),
+                        ),
+                      ];
+                    },
                   ),
                 ],
               ),

@@ -175,11 +175,14 @@ class _MyHomePageState extends State<MyHomePage>
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {},
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print(_selected);
+              print(_controller.index);
+            },
           ),
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.notifications),
             onPressed: () {},
           ),
         ],
@@ -231,17 +234,14 @@ class _MyHomePageState extends State<MyHomePage>
       floatingActionButton: _selected == 2
           ? null
           : FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () =>
-          {
-            showModalBottomSheet(
-                context: context,
-                builder: (BuildContext build) {
-                  return Center(
-                      child: MySubmitPage()
-                  );
-                })
-          }),
+              child: Icon(Icons.add),
+              onPressed: () => {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext build) {
+                          return Center(child: MySubmitPage());
+                        })
+                  }),
       body: getTabBar(_tabTitle, tabBoby).values.first,
       // This trailing comma makes auto-formatting nicer for build methods.
     );

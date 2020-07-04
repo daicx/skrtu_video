@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:skrtu/pages/myshare_page.dart';
@@ -53,10 +54,13 @@ class _MyImgItem extends State<MyImgItem> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    Image.asset(
-                      'imgs/img_default.png',
-                      width: 50,
-                      height: 50,
+                    InkWell(
+                      onTap: () {},
+                      child: Image.asset(
+                        'imgs/img_default.png',
+                        width: 50,
+                        height: 50,
+                      ),
                     ),
                   ],
                 ),
@@ -65,11 +69,14 @@ class _MyImgItem extends State<MyImgItem> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text(
-                          name,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(color: Colors.black, fontSize: 11),
-                          textScaleFactor: 1.5,
+                        InkWell(
+                          onTap: () {},
+                          child: AutoSizeText(
+                            name,
+                            style: TextStyle(fontSize: 20),
+                            minFontSize: 10,
+                            maxLines: 1,
+                          ),
                         ),
                         LevelIcon(
                           lv: widget.id,
@@ -83,7 +90,7 @@ class _MyImgItem extends State<MyImgItem> {
                     Text(
                       '关注 32 KW  活跃 333 KW',
                       textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.grey, fontSize: 4),
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
                     ),
                   ],
                 ),
@@ -115,16 +122,13 @@ class _MyImgItem extends State<MyImgItem> {
                 ),
               ],
             ),
-            Expanded(
-              flex: 1,
-              child: Text(
-                '长风破浪长风破浪长风,破浪长风破浪长风破浪长风破浪',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    fontSize:
-                        MediaQuery.of(context).size.width < 400 ? 13 : 17),
-              ),
+            AutoSizeText(
+              '  ' + '长风破浪长浪长风破浪长风破浪',
+              maxLines: 1,
+              style: TextStyle(fontSize: 20),
+              minFontSize: 10,
+              stepGranularity: 10,
+              overflow: TextOverflow.ellipsis,
             ),
             Expanded(
               flex: 9,
@@ -198,10 +202,35 @@ class _MyImgItem extends State<MyImgItem> {
                     splashColor: Colors.lightBlueAccent,
                   ),
                   Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.more_vert),
-                    color: Colors.black54,
+                  PopupMenuButton(
+                    tooltip: "更多",
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Colors.black54,
+                    ),
+                    onSelected: (va) {
+                      print(va);
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return <PopupMenuEntry<String>>[
+                        PopupMenuItem<String>(
+                          value: '0',
+                          child: Text('收藏'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '1',
+                          child: Text('举报'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '2',
+                          child: Text('不感兴趣'),
+                        ),
+                        PopupMenuItem<String>(
+                          value: '3',
+                          child: Text('加入播放队列'),
+                        ),
+                      ];
+                    },
                   ),
                 ],
               ),

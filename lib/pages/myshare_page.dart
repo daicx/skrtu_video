@@ -31,8 +31,8 @@ class _MySharePage extends State<MySharePage> {
     super.initState();
     imgs.addAll([
       "imgs/user_default.png",
-      "imgs/user_default.png",
       "imgs/me.png",
+      "imgs/user_default.png",
       "imgs/user_default.png",
     ]);
   }

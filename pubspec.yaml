@@ -25,6 +25,7 @@ dependencies:
   image_picker: ^0.6.7+1
   flutter_showcase: ^0.1.0
   font_awesome_flutter: ^8.8.1
+  auto_size_text: ^2.1.0
 #  firebase_storage: ^3.1.6
 #  cloud_firestore: ^0.13.6
 #  flutter_staggered_animations: ^0.1.2

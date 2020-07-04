@@ -66,7 +66,7 @@ class _MyChatView extends State<MyChatView> {
   }
 
   void systemMessage() {
-    a = Timer.periodic(Duration(milliseconds: 300), (timer) {
+    a = Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (mounted) {
         if (i < 4) {
           setState(() {
@@ -76,13 +76,13 @@ class _MyChatView extends State<MyChatView> {
         }
       }
     });
-    b = Timer.periodic(Duration(milliseconds: 300), (timer) {
+    b = Timer.periodic(Duration(milliseconds: 100), (timer) {
       if (mounted) {
         _chatViewKey.currentState.scrollController
           ..animateTo(
             _chatViewKey.currentState.scrollController.position.maxScrollExtent,
             curve: Curves.easeOut,
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 100),
           );
       }
     });
@@ -172,7 +172,7 @@ class _MyChatView extends State<MyChatView> {
             });
           },*/
           onLoadEarlier: () {
-            print("laoding...");
+            print("loading...");
           },
           shouldShowLoadEarlier: false,
           showTraillingBeforeSend: true,
