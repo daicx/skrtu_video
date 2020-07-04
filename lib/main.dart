@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage>
 
   String imgPath = 'imgs/';
 
+  final controller = TextEditingController();
+
   TabController _controller;
 
   List<String> _tabTitle = [];
@@ -174,6 +176,53 @@ class _MyHomePageState extends State<MyHomePage>
         title: getTabBar(_tabTitle, tabBoby).keys.first,
         centerTitle: true,
         actions: <Widget>[
+          Container(
+            height: 60.0,
+            width: MediaQuery.of(context).size.width / 3,
+            child: new Padding(
+                padding: const EdgeInsets.all(6.0),
+                child: new Card(
+                  child: new Container(
+                    child: new Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                        Expanded(
+                          child: Container(
+                            color: Colors.white,
+                            alignment: Alignment.center,
+                            child: TextField(
+                              maxLength: 50,
+                              style: TextStyle(fontSize: 18),
+                              controller: controller,
+                              decoration: new InputDecoration(
+                                  contentPadding: EdgeInsets.only(top: 0.0),
+                                  hintText: 'Search',
+                                  border: InputBorder.none),
+                              // onChanged: onSearchTextChanged,
+                            ),
+                          ),
+                        ),
+                        new IconButton(
+                          icon: new Icon(Icons.cancel),
+                          color: Colors.grey,
+                          iconSize: 18.0,
+                          onPressed: () {
+                            controller.clear();
+                            // onSearchTextChanged('');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+          ),
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
