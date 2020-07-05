@@ -5,6 +5,7 @@ import 'package:skrtu/component/mychat_view.dart';
 import 'package:skrtu/pages/mycare_page.dart';
 import 'package:skrtu/pages/mycollect_page.dart';
 import 'package:skrtu/pages/play_video_page.dart';
+import 'package:skrtu/pages/search/search_page.dart';
 import 'package:skrtu/pages/watch_article.dart';
 
 import '../main.dart';
@@ -36,10 +37,14 @@ Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return MyCollectPage();
 });
 var watchthandle =
-Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return PlayVideoPage();
 });
 var whatArticlehandle =
-Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return WhatArticle();
+});
+var searchPagehandle =
+    Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return SearchPage();
 });

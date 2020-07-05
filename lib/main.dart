@@ -230,8 +230,7 @@ class _MyHomePageState extends State<MyHomePage>
           IconButton(
             icon: Icon(Icons.search),
             onPressed: () {
-              print(_selected);
-              print(_controller.index);
+             Routes.navigateTo(context, Routes.searchPage);
             },
           ),
           IconButton(

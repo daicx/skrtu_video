@@ -12,14 +12,15 @@ class Routes {
   static String collect = "/collects";
   static String watch = "/watchs";
   static String whatArticle = "/what_article";
+  static String searchPage = "/search_page";
 
   static void configureRoutes(Router router) {
     // 未发现对应route
     router.notFoundHandler = Handler(
         handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-          print('route not found!');
-          return;
-        });
+      print('route not found!');
+      return;
+    });
     router.define(root, handler: roothandle);
     router.define(chat, handler: chathandle);
     router.define(friendDetail, handler: friendDetailhandle);
@@ -27,9 +28,10 @@ class Routes {
     router.define(collect, handler: collecthandle);
     router.define(watch, handler: watchthandle);
     router.define(whatArticle, handler: whatArticlehandle);
+    router.define(searchPage, handler: searchPagehandle);
     Routes.router = router;
-
   }
+
   // 对参数进行encode，解决参数中有特殊字符，影响fluro路由匹配
   static Future navigateTo(BuildContext context, String path,
       {Map<String, dynamic> params,
