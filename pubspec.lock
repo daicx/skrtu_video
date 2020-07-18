@@ -146,6 +146,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_inappwebview:
+    dependency: "direct main"
+    description:
+      name: flutter_inappwebview
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "4.0.0+4"
   flutter_parsed_text:
     dependency: transitive
     description:
@@ -184,6 +191,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_widget_from_html_core:
+    dependency: "direct main"
+    description:
+      name: flutter_widget_from_html_core
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.1"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -275,6 +289,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.8"
+  mime:
+    dependency: transitive
+    description:
+      name: mime
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.6+3"
   node_interop:
     dependency: transitive
     description:
@@ -407,12 +428,19 @@ packages:
     source: hosted
     version: "1.1.6"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.4.11"
+    version: "5.5.0"
+  url_launcher_linux:
+    dependency: transitive
+    description:
+      name: url_launcher_linux
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.0.1+1"
   url_launcher_macos:
     dependency: transitive
     description:
@@ -483,6 +511,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.7+15"
+  webview_flutter:
+    dependency: "direct main"
+    description:
+      name: webview_flutter
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.3.22+1"
   yaml:
     dependency: transitive
     description:
