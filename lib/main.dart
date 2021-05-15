@@ -16,7 +16,7 @@ import 'component/mystate_grid_view.dart';
 import 'component/mytabbar.dart';
 
 void main() {
-  final router = Router();
+  final router = FluroRouter();
   Routes.configureRoutes(router);
   runApp(MyApp());
 }
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Skr 兔'),
+      home: MyHomePage(title: 'Skr兔'),
     );
   }
 }

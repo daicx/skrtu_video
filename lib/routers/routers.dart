@@ -4,7 +4,7 @@ import 'package:skrtu/routers/router_hander.dart';
 
 class Routes {
 //路由管理
-  static Router router;
+  static FluroRouter router;
   static String root = "/";
   static String chat = "/chat";
   static String friendDetail = "/friend_detail";
@@ -14,7 +14,7 @@ class Routes {
   static String whatArticle = "/what_article";
   static String searchPage = "/search_page";
 
-  static void configureRoutes(Router router) {
+  static void configureRoutes(FluroRouter router) {
     // 未发现对应route
     router.notFoundHandler = Handler(
         handlerFunc: (BuildContext context, Map<String, dynamic> params) {

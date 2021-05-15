@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fluro: ^1.6.3
+  fluro: ^2.0.3
   video_player: ^0.10.11+1
   chewie: ^0.9.10
   like_button: ^1.0.0

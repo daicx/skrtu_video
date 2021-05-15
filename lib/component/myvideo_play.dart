@@ -64,7 +64,6 @@ class _MyVideo extends State<MyVideo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
